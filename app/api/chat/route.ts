@@ -46,8 +46,14 @@ export async function POST(req: Request) {
       try {
         const mStream = client.messages.stream({
           model: MODEL,
-          max_tokens: 4096,
-          system: SYSTEM_PROMPT,
+          max_tokens: 3072,
+          system: [
+            {
+              type: "text",
+              text: SYSTEM_PROMPT,
+              cache_control: { type: "ephemeral" },
+            },
+          ],
           messages: messages.map((m) => ({ role: m.role, content: m.content })),
         });
 
