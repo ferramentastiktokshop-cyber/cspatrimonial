@@ -53,7 +53,7 @@ export async function POST(req: Request) {
               text: SYSTEM_PROMPT,
               cache_control: { type: "ephemeral" },
             },
-          ],
+          ], 
           messages: messages.map((m) => ({ role: m.role, content: m.content })),
         });
 
